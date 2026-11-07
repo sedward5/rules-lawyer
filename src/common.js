@@ -58,44 +58,55 @@ export function dailyIndex(dateKey, count) {
 
 export function cardStripMarkup(cards = []) {
   if (!cards.length) return "";
-  return `<div class="card-strip" aria-label="Cards in this scenario">${cards.map(card => `
+  return `<div class="card-strip" aria-label="Cards in this scenario">${cards.map((card, index) => `
     <figure class="card-figure">
-      <a class="card-image-link" data-card-name="${escapeHtml(card.name)}" href="https://scryfall.com/search?q=${encodeURIComponent(card.name)}" target="_blank" rel="noopener noreferrer">
+      <a class="card-image-link" data-card-index="${index}" href="https://scryfall.com/search?q=${encodeURIComponent(card.name)}" target="_blank" rel="noopener noreferrer">
         <div class="card-image-placeholder">${escapeHtml(card.name)}</div>
       </a>
-      <figcaption><strong>${escapeHtml(card.name)}</strong><span>${escapeHtml(card.role || "Scenario card")}</span></figcaption>
+      <figcaption><strong data-card-caption="${index}">${escapeHtml(card.name)}</strong><span>${escapeHtml(card.role || "Scenario card")}</span></figcaption>
     </figure>`).join("")}</div>`;
 }
 
 export async function hydrateCardImages(container, cards = []) {
   if (!container || !cards.length) return;
-  for (const card of cards) {
-    const link = [...container.querySelectorAll("[data-card-name]")].find(el => el.dataset.cardName === card.name);
+  const cache = new Map();
+  for (const [index, card] of cards.entries()) {
+    const link = container.querySelector(`[data-card-index="${index}"]`);
     if (!link) continue;
     try {
-      const cacheKey = `rules-lawyer-scryfall-image:${card.name.toLowerCase()}`;
-      let data = null;
-      try { data = JSON.parse(localStorage.getItem(cacheKey) || "null"); } catch {}
-      if (!data?.image) {
-        const endpoint = `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(card.name)}`;
-        const response = await fetch(endpoint, { headers: { "Accept": "application/json" } });
-        if (!response.ok) throw new Error(`Scryfall returned ${response.status}`);
-        const result = await response.json();
-        const image = result.image_uris?.normal || result.card_faces?.[0]?.image_uris?.normal;
-        if (!image) throw new Error("No normal image was supplied for this card.");
-        data = { image, page: result.scryfall_uri };
-        try { localStorage.setItem(cacheKey, JSON.stringify(data)); } catch {}
+      const query = card.scryfallQuery;
+      const cacheKey = `rules-lawyer-scryfall-image:${(query || card.name).toLowerCase()}`;
+      let data = cache.get(cacheKey);
+      if (!data) {
+        try { data = JSON.parse(localStorage.getItem(cacheKey) || "null"); } catch {}
+        if (!data?.image) {
+          const endpoint = query
+            ? `https://api.scryfall.com/cards/search?q=${encodeURIComponent(query)}&order=edhrec&unique=cards`
+            : `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(card.name)}`;
+          const response = await fetch(endpoint, { headers: { "Accept": "application/json" } });
+          if (!response.ok) throw new Error(`Scryfall returned ${response.status}`);
+          const result = await response.json();
+          const selected = query ? result.data?.[0] : result;
+          if (!selected) throw new Error("Scryfall did not return a matching card.");
+          const actualName = selected.name;
+          const image = selected.image_uris?.normal || selected.card_faces?.[0]?.image_uris?.normal;
+          if (!image) throw new Error("No normal image was supplied for this card.");
+          data = { image, page: selected.scryfall_uri, name: actualName };
+          try { localStorage.setItem(cacheKey, JSON.stringify(data)); } catch {}
+        }
+        cache.set(cacheKey, data);
       }
       const img = document.createElement("img");
       img.src = data.image;
-      img.alt = `${card.name} Magic card`;
+      img.alt = `${data.name || card.name} Magic card`;
       img.loading = "lazy";
       img.decoding = "async";
       link.replaceChildren(img);
-      link.href = data.page || `https://scryfall.com/search?q=${encodeURIComponent(card.name)}`;
-      link.setAttribute("aria-label", `View ${card.name} on Scryfall`);
+      link.href = data.page || `https://scryfall.com/search?q=${encodeURIComponent(data.name || card.name)}`;
+      link.setAttribute("aria-label", `View ${data.name || card.name} on Scryfall`);
+      const caption = container.querySelector(`[data-card-caption="${index}"]`);
+      if (caption && query) caption.textContent = data.name;
     } catch (error) {
-      // Keep the readable card-name placeholder if the remote service is unavailable.
       link.title = `Card image unavailable: ${error.message}`;
     }
   }

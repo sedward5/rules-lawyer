@@ -151,7 +151,17 @@ async function loadExample() {
   const batchDocuments = await Promise.all(batchResponses.map(response => response.json()));
   const allQuestions = batchDocuments.flatMap(batch => Array.isArray(batch) ? batch : batch.questions || []);
   if (allQuestions.length === 0) throw new Error("The manifest batches did not contain any questions.");
-  importQuestions(JSON.stringify({ questions: allQuestions }));
+  // Keep local edits, but never let an old one-question draft hide the rest of the manifest.
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null"); } catch {}
+  const savedById = new Map((saved?.questions || []).map(q => [q.id, q]));
+  const merged = allQuestions.map(q => savedById.get(q.id) || q);
+  const knownIds = new Set(merged.map(q => q.id));
+  for (const q of saved?.questions || []) if (!knownIds.has(q.id)) merged.push(q);
+  questions = validateBatch(merged).map(q => structuredClone(q));
+  selectedId = questions[0]?.id || null;
+  persistDraft();
+  renderQueue();
 }
 $("#import-button").addEventListener("click", () => {
   try {
@@ -209,15 +219,10 @@ $("#export-button").addEventListener("click", async () => {
 });
 
 try {
-  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-  if (saved?.questions) {
-    questions = validateBatch(saved.questions).map(q => structuredClone(q));
-    selectedId = saved.selectedId;
-    renderQueue();
-    $("#import-message").textContent = "Restored your local working draft. Export it to preserve changes in GitHub.";
-  } else {
-    await loadExample();
-  }
+  // Always load every manifest batch first. loadExample overlays saved edits by ID,
+  // so an old one-question local draft cannot collapse the Workshop queue.
+  await loadExample();
+  $("#import-message").textContent = `Loaded ${questions.length} questions, including any saved local edits.`;
 } catch (error) {
-  $("#import-message").textContent = `Could not restore draft: ${error.message}`;
+  $("#import-message").textContent = `Could not load the question library: ${error.message}`;
 }

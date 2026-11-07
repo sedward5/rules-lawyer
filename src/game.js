@@ -3,6 +3,8 @@ import { escapeHtml, dailyIndex, localDateKey, cardStripMarkup, hydrateCardImage
 const game = document.querySelector("#game");
 const dateKey = localDateKey();
 document.querySelector("#puzzle-date").textContent = `DAILY CHALLENGE · ${dateKey}`;
+let availableQuestions = [];
+let currentMode = "daily";
 
 async function loadQuestions() {
   const manifestResponse = await fetch("./content/manifest.json");
@@ -29,7 +31,7 @@ async function renderQuestion(q) {
         <span class="pill">${escapeHtml(q.category)}</span>
         <span class="pill">${escapeHtml(q.difficulty)}</span>
       </div>
-      <h2>${escapeHtml(q.title || "What happens next?")}</h2>
+      <div class="section-heading game-heading"><h2>${escapeHtml(q.title || "What happens next?")}</h2><button id="random-question" class="button secondary" type="button">Random question ↻</button></div>
       ${cardStripMarkup(q.cards || [])}
       <p>${escapeHtml(q.scenario.description)}</p>
       <h3>${escapeHtml(q.question.prompt)}</h3>
@@ -42,6 +44,14 @@ async function renderQuestion(q) {
     </div>`;
 
   await hydrateCardImages(game, q.cards || []);
+  document.querySelector("#random-question").addEventListener("click", () => {
+    if (availableQuestions.length < 2) return;
+    let next = q;
+    while (next.id === q.id) next = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
+    currentMode = "random";
+    document.querySelector("#puzzle-date").textContent = "RANDOM PRACTICE · NOT THE DAILY CHALLENGE";
+    renderQuestion(next);
+  });
 
   document.querySelector("#answer-form").addEventListener("submit", event => {
     event.preventDefault();
@@ -62,12 +72,12 @@ async function renderQuestion(q) {
 }
 
 try {
-  const questions = (await loadQuestions())
+  availableQuestions = (await loadQuestions())
     .filter(q => q.status === "approved" && q.review?.rules === "verified")
     .sort((a, b) => a.id.localeCompare(b.id));
-  if (!questions.length) throw new Error("No approved, rules-verified questions are available yet.");
-  const index = dailyIndex(dateKey, questions.length);
-  await renderQuestion(questions[index]);
+  if (!availableQuestions.length) throw new Error("No approved, rules-verified questions are available yet.");
+  const index = dailyIndex(dateKey, availableQuestions.length);
+  await renderQuestion(availableQuestions[index]);
 } catch (error) {
   game.innerHTML = `<div class="feedback"><strong>Today's puzzle isn't available yet.</strong><p>${escapeHtml(error.message)}</p><p>The content library may still be in setup. Visit the Workshop to review the question batch.</p></div>`;
 }
