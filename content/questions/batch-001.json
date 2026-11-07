@@ -7,7 +7,7 @@
       "difficulty": "beginner",
       "scenario": {
         "format": "two-player",
-        "description": "Your opponent controls a creature enchanted with Pacifism. You cast Naturalize targeting Pacifism. In response, your opponent activates an ability that sacrifices the enchanted creature."
+        "description": "Your opponent controls a creature enchanted with Pacifism. You cast Naturalize targeting Pacifism. In response, your opponent activates an ability. That ability resolves and instructs them to sacrifice the enchanted creature."
       },
       "question": {
         "prompt": "What happens when Naturalize would resolve?",
@@ -31,24 +31,35 @@
         ]
       },
       "answer": "a",
-      "explanation": "The creature is sacrificed as the ability resolves. After that ability finishes resolving, state-based actions are checked before a player receives priority. Pacifism is an Aura that is no longer attached to a legal object, so it is put into its owner's graveyard. When Naturalize would resolve, its only target (Pacifism) is no longer on the battlefield and is illegal. Because all of Naturalize's targets are illegal, it doesn't resolve.",
-      "takeaway": "An Aura that becomes unattached is put into its owner's graveyard as a state-based action. A spell with all its targets illegal doesn't resolve; this is often colloquially called 'fizzling,' but it is not the same as being countered by a counterspell.",
+      "explanation": "The sacrifice ability resolves first. After it finishes, state-based actions are checked before a player receives priority. Pacifism is no longer attached to a legal object, so it is put into its owner's graveyard. When Naturalize would resolve, its only target is no longer in the zone where it was targeted and is illegal. Because all of Naturalize's targets are illegal, it doesn't resolve. Players sometimes call this 'fizzling'; it is not the same as being countered by a counterspell.",
+      "takeaway": "An unattached Aura is put into its owner's graveyard as a state-based action. A spell with all targets illegal doesn't resolve; that is often called fizzling, but it is not countered by a counterspell.",
       "rules": [
+        "CR 303.4c",
         "CR 704.5m",
+        "CR 117.5",
         "CR 608.2b"
       ],
       "status": "approved",
       "review": {
-        "editorial": "starter example; wording checked for a clear two-player scenario",
         "rules": "verified",
-        "rules_version": "2026-11-06",
-        "reviewer_type": "rules-source check",
-        "notes": "Verify against the current official Comprehensive Rules before public release. This starter is intended to demonstrate the content format and should receive an independent judge review."
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Scenario wording explicitly states the sacrifice is an effect on resolution, not an activation cost, to remove timing ambiguity. Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck before public launch or after a rules update."
       },
       "editorial": {
-        "intent": "Test how an Aura behaves when the permanent it enchants leaves the battlefield, and how an illegal target is handled on resolution.",
-        "review_focus": "Check that the sacrifice ability is understood to resolve before Naturalize. Keep the distinction between 'doesn't resolve' and 'countered' precise."
-      }
+        "intent": "Test Aura state-based actions and what happens when all targets of a spell become illegal.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      },
+      "cards": [
+        {
+          "name": "Naturalize",
+          "role": "The instant spell"
+        },
+        {
+          "name": "Pacifism",
+          "role": "The Aura"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,1375 @@
+{
+  "questions": [
+    {
+      "id": "rules-002",
+      "title": "A land isn't a spell",
+      "category": "game-actions",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "It is your opponent's main phase, the stack is empty, and they play a Forest from their hand. You want to cast an instant in response to the Forest being played."
+      },
+      "question": {
+        "prompt": "Can you respond to the land play?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes. Playing a land uses the stack."
+          },
+          {
+            "id": "b",
+            "text": "Yes, but only with an instant."
+          },
+          {
+            "id": "c",
+            "text": "No. Playing a land is a special action and doesn't use the stack."
+          },
+          {
+            "id": "d",
+            "text": "No. Lands can only be played during your own turn."
+          }
+        ]
+      },
+      "answer": "c",
+      "explanation": "Playing a land from hand is a special action. The land is put directly onto the battlefield; it is never a spell and doesn't go on the stack. There is no opportunity to respond to the land play itself.",
+      "takeaway": "Playing a land from hand is a special action.",
+      "rules": [
+        "CR 305.1",
+        "CR 116.2a"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Teach that playing a land is a special action, not casting a spell.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-003",
+      "title": "The extra land from an effect",
+      "category": "game-actions",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "You have already played a land this turn. Later, a resolving spell instructs you to put a basic land card from your hand onto the battlefield."
+      },
+      "question": {
+        "prompt": "Does putting that land onto the battlefield use up another land play?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes. Any land entering the battlefield counts as a land play."
+          },
+          {
+            "id": "b",
+            "text": "No. Putting a land onto the battlefield is not the same as playing a land."
+          },
+          {
+            "id": "c",
+            "text": "Yes, unless the land is basic."
+          },
+          {
+            "id": "d",
+            "text": "No, because you can always play two lands during your turn."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "An effect that puts a land onto the battlefield is not instructing you to play that land. It doesn't count as a land played this turn. This is distinct from an effect that says you may play an additional land.",
+      "takeaway": "An effect that puts a land onto the battlefield is not instructing you to play that land.",
+      "rules": [
+        "CR 305.4",
+        "CR 305.2"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Distinguish putting a land onto the battlefield from playing a land.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-004",
+      "title": "One land for the turn",
+      "category": "game-actions",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "You have played a land this turn. You control no effects that allow additional land plays, and no effect is instructing you to put a land onto the battlefield."
+      },
+      "question": {
+        "prompt": "Can you play a second land from your hand this turn?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, during any main phase."
+          },
+          {
+            "id": "b",
+            "text": "Yes, if the second land is basic."
+          },
+          {
+            "id": "c",
+            "text": "No. A player normally gets one land play per turn."
+          },
+          {
+            "id": "d",
+            "text": "No. A player may only play one land per game."
+          }
+        ]
+      },
+      "answer": "c",
+      "explanation": "A player can normally play one land during their turn. Effects can increase that number, but the scenario explicitly says none apply.",
+      "takeaway": "A player can normally play one land during their turn.",
+      "rules": [
+        "CR 305.2"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the normal one-land-per-turn rule and its stated exception.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-005",
+      "title": "The new creature",
+      "category": "combat",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "You cast a creature during your first main phase. It resolves and enters the battlefield under your control. It doesn't have haste, and no other effect changes its abilities."
+      },
+      "question": {
+        "prompt": "Can it attack this turn?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, because you control it before combat."
+          },
+          {
+            "id": "b",
+            "text": "Yes, if you pay its mana cost again."
+          },
+          {
+            "id": "c",
+            "text": "No. It hasn't been under your control continuously since your turn began."
+          },
+          {
+            "id": "d",
+            "text": "No. Creatures can never attack on the turn they enter."
+          }
+        ]
+      },
+      "answer": "c",
+      "explanation": "A creature can't attack unless it has been under its controller's control continuously since that player's most recent turn began. Haste is an exception, but the scenario says the creature doesn't have it.",
+      "takeaway": "A creature can't attack unless it has been under its controller's control continuously since that player's most recent turn began.",
+      "rules": [
+        "CR 302.6",
+        "CR 702.10b"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the summoning-sickness rule without mixing it up with tap-symbol abilities.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-006",
+      "title": "Haste means haste",
+      "category": "combat",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "A creature entered the battlefield under your control earlier this turn. It has haste and has no other restrictions."
+      },
+      "question": {
+        "prompt": "Which of these can it do this turn?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It can attack, but it cannot activate an ability with {T} in its cost."
+          },
+          {
+            "id": "b",
+            "text": "It can activate a {T} ability, but it cannot attack."
+          },
+          {
+            "id": "c",
+            "text": "It can both attack and activate an ability with {T} in its cost, if it can pay the costs."
+          },
+          {
+            "id": "d",
+            "text": "It can do neither until your next turn."
+          }
+        ]
+      },
+      "answer": "c",
+      "explanation": "Haste allows a creature to attack despite not having been under your control since your turn began. It also allows its controller to activate its activated abilities with tap or untap symbols in their costs.",
+      "takeaway": "Haste allows a creature to attack despite not having been under your control since your turn began.",
+      "rules": [
+        "CR 702.10b",
+        "CR 702.10c",
+        "CR 302.6"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test both parts of haste's exception to the summoning-sickness rule.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-007",
+      "title": "The legend rule",
+      "category": "state-based-actions",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "You control two legendary creatures with the same name. Your opponent controls neither of them. Both permanents are otherwise unaffected."
+      },
+      "question": {
+        "prompt": "What happens?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Both remain because they have different physical cards."
+          },
+          {
+            "id": "b",
+            "text": "You choose one to keep; the other is put into its owner's graveyard."
+          },
+          {
+            "id": "c",
+            "text": "Your opponent chooses which one stays."
+          },
+          {
+            "id": "d",
+            "text": "Both are sacrificed."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "Whenever a player controls two or more legendary permanents with the same name, that player chooses one. The rest are put into their owners' graveyards. This is a state-based action, not a sacrifice.",
+      "takeaway": "Whenever a player controls two or more legendary permanents with the same name, that player chooses one.",
+      "rules": [
+        "CR 704.5j"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Teach who makes the choice and distinguish the legend rule from sacrificing.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-008",
+      "title": "Opposing counters",
+      "category": "state-based-actions",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "A creature has two +1/+1 counters and one -1/-1 counter on it. No effect prevents counters from being removed."
+      },
+      "question": {
+        "prompt": "What happens the next time state-based actions are checked?",
+        "options": [
+          {
+            "id": "a",
+            "text": "All three counters are removed."
+          },
+          {
+            "id": "b",
+            "text": "One +1/+1 counter and one -1/-1 counter are removed."
+          },
+          {
+            "id": "c",
+            "text": "The creature is destroyed."
+          },
+          {
+            "id": "d",
+            "text": "The counters remain until end of turn."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "State-based action 704.5q removes equal numbers of +1/+1 and -1/-1 counters. One of each is removed, leaving one +1/+1 counter.",
+      "takeaway": "State-based action 704.",
+      "rules": [
+        "CR 704.5q"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the automatic cancellation of +1/+1 and -1/-1 counters.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-009",
+      "title": "Indestructible isn't invincible",
+      "category": "combat",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "A 3/3 creature has indestructible. It is dealt 5 damage by a spell. No effect reduces its toughness or removes its abilities."
+      },
+      "question": {
+        "prompt": "What happens when state-based actions are checked?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The creature is destroyed because it has lethal damage."
+          },
+          {
+            "id": "b",
+            "text": "The creature remains on the battlefield with 5 damage marked on it."
+          },
+          {
+            "id": "c",
+            "text": "The damage is prevented."
+          },
+          {
+            "id": "d",
+            "text": "The creature is sacrificed."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "A permanent with indestructible can't be destroyed, including by lethal damage. The damage is still dealt and marked; indestructible doesn't prevent damage. The marked damage is removed during the cleanup step unless another effect changes the situation.",
+      "takeaway": "A permanent with indestructible can't be destroyed, including by lethal damage.",
+      "rules": [
+        "CR 702.12b",
+        "CR 704.5g",
+        "CR 120.6"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Distinguish preventing damage from preventing destruction.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-010",
+      "title": "One point of deathtouch",
+      "category": "combat",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "A 1/1 creature with deathtouch deals 1 damage to an undamaged 6/6 creature. The 6/6 has no relevant abilities."
+      },
+      "question": {
+        "prompt": "What happens when state-based actions are checked?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The 6/6 survives because 1 damage is less than 6."
+          },
+          {
+            "id": "b",
+            "text": "The 6/6 is destroyed."
+          },
+          {
+            "id": "c",
+            "text": "Both creatures are destroyed."
+          },
+          {
+            "id": "d",
+            "text": "The 6/6 is tapped."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "A creature dealt damage by a source with deathtouch since the last state-based-action check is destroyed by a state-based action. The amount of damage can be just 1.",
+      "takeaway": "A creature dealt damage by a source with deathtouch since the last state-based-action check is destroyed by a state-based action.",
+      "rules": [
+        "CR 702.2",
+        "CR 704.5h"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test deathtouch's state-based action rather than lethal-damage math.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-011",
+      "title": "Can reach block flying?",
+      "category": "combat",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "Your opponent attacks with a creature that has flying. You control a creature with reach and no other relevant abilities."
+      },
+      "question": {
+        "prompt": "Can your creature block the attacker?",
+        "options": [
+          {
+            "id": "a",
+            "text": "No. Only creatures with flying can block flying."
+          },
+          {
+            "id": "b",
+            "text": "Yes. Reach allows it to block creatures with flying."
+          },
+          {
+            "id": "c",
+            "text": "Yes, but only if the attacking creature is tapped."
+          },
+          {
+            "id": "d",
+            "text": "No. Reach only works when attacking."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "A creature with flying can be blocked by creatures with flying and/or reach. Reach doesn't itself grant flying.",
+      "takeaway": "A creature with flying can be blocked by creatures with flying and/or reach.",
+      "rules": [
+        "CR 702.9b",
+        "CR 702.17b"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the interaction between flying and reach.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-012",
+      "title": "Menace needs a crowd",
+      "category": "combat",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "Your opponent attacks with a creature that has menace. You control only one untapped creature that could legally block it."
+      },
+      "question": {
+        "prompt": "Can you block the attacker with that one creature?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes. One blocker is enough if it has greater power."
+          },
+          {
+            "id": "b",
+            "text": "Yes. Menace only matters if the attacker is blocked by a creature with flying."
+          },
+          {
+            "id": "c",
+            "text": "No. A creature with menace can't be blocked except by two or more creatures."
+          },
+          {
+            "id": "d",
+            "text": "No. Menace means the creature can't be blocked at all."
+          }
+        ]
+      },
+      "answer": "c",
+      "explanation": "Menace means the creature can't be blocked except by two or more creatures. The number of blockers matters, not their combined power.",
+      "takeaway": "Menace means the creature can't be blocked except by two or more creatures.",
+      "rules": [
+        "CR 702.111b"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the minimum number of blockers required by menace.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-013",
+      "title": "Trample through the blocker",
+      "category": "combat",
+      "difficulty": "intermediate",
+      "scenario": {
+        "format": "two-player",
+        "description": "A 5/5 creature with trample is attacking and is blocked by an undamaged 2/2 creature. No other effects modify damage, power, or toughness."
+      },
+      "question": {
+        "prompt": "What is the minimum damage the attacker must assign to the blocker to assign any damage to the defending player?",
+        "options": [
+          {
+            "id": "a",
+            "text": "0"
+          },
+          {
+            "id": "b",
+            "text": "1"
+          },
+          {
+            "id": "c",
+            "text": "2"
+          },
+          {
+            "id": "d",
+            "text": "5"
+          }
+        ]
+      },
+      "answer": "c",
+      "explanation": "The attacking creature's controller must assign lethal damage to the blocking creature before assigning excess damage to the defending player. With an undamaged 2/2 blocker and no other modifiers, lethal damage is 2.",
+      "takeaway": "The attacking creature's controller must assign lethal damage to the blocking creature before assigning excess damage to the defending player.",
+      "rules": [
+        "CR 702.19b"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test lethal-damage assignment for trample with a clean, unmodified board.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-014",
+      "title": "First strike's extra step",
+      "category": "combat",
+      "difficulty": "intermediate",
+      "scenario": {
+        "format": "two-player",
+        "description": "A 2/2 creature with first strike is blocked by a 3/3 creature with no abilities. Both creatures remain in combat when the combat damage step begins."
+      },
+      "question": {
+        "prompt": "When does the 3/3 assign its combat damage?",
+        "options": [
+          {
+            "id": "a",
+            "text": "In the same combat damage step as the first-strike creature."
+          },
+          {
+            "id": "b",
+            "text": "In a second combat damage step, if it is still in combat."
+          },
+          {
+            "id": "c",
+            "text": "It never assigns damage because it was blocked."
+          },
+          {
+            "id": "d",
+            "text": "Before the first-strike creature assigns damage."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "Because at least one creature involved has first strike as the combat damage step begins, a first combat damage step occurs for creatures with first strike or double strike. A second combat damage step follows for remaining creatures that didn't have first strike or double strike at the beginning, plus creatures with double strike. The 3/3 assigns damage in that second step if it remains in combat.",
+      "takeaway": "Because at least one creature involved has first strike as the combat damage step begins, a first combat damage step occurs for creatures with first strike or double strike.",
+      "rules": [
+        "CR 702.7b"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the two-step combat damage procedure created by first strike.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-015",
+      "title": "The source left, the trigger remains",
+      "category": "stack",
+      "difficulty": "intermediate",
+      "scenario": {
+        "format": "two-player",
+        "description": "A creature enters the battlefield and its ability triggers: 'When this creature enters, draw a card.' Before that ability resolves, an opponent destroys the creature."
+      },
+      "question": {
+        "prompt": "What happens to the triggered ability?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is removed from the stack because its source left the battlefield."
+          },
+          {
+            "id": "b",
+            "text": "It remains on the stack and can resolve normally."
+          },
+          {
+            "id": "c",
+            "text": "It is countered automatically."
+          },
+          {
+            "id": "d",
+            "text": "It resolves only if the creature returns to the battlefield."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "Once triggered, an ability exists on the stack independently of its source. Removing the source after the ability has triggered doesn't remove the ability. Unless something else counters or removes it, it can resolve normally.",
+      "takeaway": "Once triggered, an ability exists on the stack independently of its source.",
+      "rules": [
+        "CR 113.7a",
+        "CR 603.3"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Teach that triggered abilities on the stack are independent of their sources.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-016",
+      "title": "A trigger waits for priority",
+      "category": "stack",
+      "difficulty": "intermediate",
+      "scenario": {
+        "format": "two-player",
+        "description": "A permanent's triggered ability triggers during the resolution of a spell. The resolving spell finishes, and the game is about to give a player priority."
+      },
+      "question": {
+        "prompt": "When is the triggered ability put onto the stack?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Immediately in the middle of the spell's resolution."
+          },
+          {
+            "id": "b",
+            "text": "The next time a player would receive priority, after applicable state-based actions are checked."
+          },
+          {
+            "id": "c",
+            "text": "At the beginning of the next turn."
+          },
+          {
+            "id": "d",
+            "text": "It never goes on the stack unless its controller pays mana."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "A triggered ability triggers when its event occurs, but it is put onto the stack the next time a player would receive priority. State-based actions are checked as part of the priority process before triggered abilities are put on the stack.",
+      "takeaway": "A triggered ability triggers when its event occurs, but it is put onto the stack the next time a player would receive priority.",
+      "rules": [
+        "CR 603.2",
+        "CR 603.3",
+        "CR 117.5"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Distinguish the moment an ability triggers from the moment it is put on the stack.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-017",
+      "title": "State-based actions don't use the stack",
+      "category": "state-based-actions",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "A creature has 0 toughness. No replacement or prevention effect applies. You are waiting to receive priority."
+      },
+      "question": {
+        "prompt": "Can an opponent cast an instant in response to the creature being put into its owner's graveyard by a state-based action?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes. State-based actions go on the stack."
+          },
+          {
+            "id": "b",
+            "text": "Yes, but only if the instant is a removal spell."
+          },
+          {
+            "id": "c",
+            "text": "No. State-based actions don't use the stack and happen before a player receives priority."
+          },
+          {
+            "id": "d",
+            "text": "No. The creature remains until the end of the turn."
+          }
+        ]
+      },
+      "answer": "c",
+      "explanation": "State-based actions happen automatically and don't use the stack. They are checked before a player receives priority, so players can't respond to the state-based action itself.",
+      "takeaway": "State-based actions happen automatically and don't use the stack.",
+      "rules": [
+        "CR 704.1",
+        "CR 117.5"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test that state-based actions are not stack objects and cannot be responded to.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-018",
+      "title": "The token that died",
+      "category": "zones",
+      "difficulty": "intermediate",
+      "scenario": {
+        "format": "two-player",
+        "description": "A creature token is destroyed and put into its owner's graveyard. A triggered ability says, 'Whenever a creature dies, draw a card.'"
+      },
+      "question": {
+        "prompt": "Does the death trigger trigger before the token ceases to exist?",
+        "options": [
+          {
+            "id": "a",
+            "text": "No. Tokens disappear before zone-change triggers can see them."
+          },
+          {
+            "id": "b",
+            "text": "Yes. The token moves to the graveyard, the dies ability triggers, and the token then ceases to exist as a state-based action."
+          },
+          {
+            "id": "c",
+            "text": "No. Tokens can't die."
+          },
+          {
+            "id": "d",
+            "text": "Yes, but the token remains in the graveyard permanently."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "A token that leaves the battlefield can cause appropriate zone-change abilities to trigger. A token in a zone other than the battlefield ceases to exist as a state-based action; that happens after the zone change and its triggers are recognized.",
+      "takeaway": "A token that leaves the battlefield can cause appropriate zone-change abilities to trigger.",
+      "rules": [
+        "CR 111.7",
+        "CR 603.2",
+        "CR 704.1"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the timing of a token's zone change and its subsequent ceasing to exist.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-019",
+      "title": "Drawing from an empty library",
+      "category": "game-actions",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "Your library contains two cards. A resolving spell instructs you to draw three cards. No replacement effect changes the draws."
+      },
+      "question": {
+        "prompt": "What happens?",
+        "options": [
+          {
+            "id": "a",
+            "text": "You draw two cards, then lose the game the next time a player would receive priority."
+          },
+          {
+            "id": "b",
+            "text": "You lose immediately before drawing any cards."
+          },
+          {
+            "id": "c",
+            "text": "You draw two cards and continue the game without penalty."
+          },
+          {
+            "id": "d",
+            "text": "You shuffle your graveyard into your library and draw the third card."
+          }
+        ]
+      },
+      "answer": "a",
+      "explanation": "Cards are drawn one at a time. You draw the two cards that remain, then the next attempted draw is from an empty library. Because you attempted to draw a card from a library with no cards in it, you lose the game the next time a player would receive priority. This is not an immediate interruption in the middle of the spell's resolution.",
+      "takeaway": "You draw as many cards as possible.",
+      "rules": [
+        "CR 104.3c",
+        "CR 121.2",
+        "CR 121.4"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked the individual-draw rule and the empty-library loss rule separately. CR 121.2 governs one-at-a-time draws; CR 121.4 governs the loss after attempting to draw from an empty library. Recheck before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the actual timing of losing for attempting to draw from an empty library.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-020",
+      "title": "Equip is sorcery speed",
+      "category": "game-actions",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "It is your opponent's turn. You control an Equipment and a creature you control. The stack is not empty."
+      },
+      "question": {
+        "prompt": "Can you activate the Equipment's normal equip ability now?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes. Equip can be activated any time you have priority."
+          },
+          {
+            "id": "b",
+            "text": "Yes, if you pay twice the equip cost."
+          },
+          {
+            "id": "c",
+            "text": "No. Equip can be activated only as a sorcery."
+          },
+          {
+            "id": "d",
+            "text": "No. Equipment can only be attached when it enters the battlefield."
+          }
+        ]
+      },
+      "answer": "c",
+      "explanation": "The equip ability means to pay its cost to attach the Equipment to a target creature you control, and it can be activated only as a sorcery. That means you need priority during your own main phase while the stack is empty.",
+      "takeaway": "The equip ability means to pay its cost to attach the Equipment to a target creature you control, and it can be activated only as a sorcery.",
+      "rules": [
+        "CR 702.6a",
+        "CR 307.5"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the timing restriction built into the equip keyword.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-021",
+      "title": "Flash changes the timing",
+      "category": "game-actions",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "You have a creature card with flash in your hand. It is your opponent's turn, and you have priority."
+      },
+      "question": {
+        "prompt": "May you cast that creature now?",
+        "options": [
+          {
+            "id": "a",
+            "text": "No. Creature spells can only be cast during your main phase."
+          },
+          {
+            "id": "b",
+            "text": "Yes. Flash lets you cast the card any time you could cast an instant."
+          },
+          {
+            "id": "c",
+            "text": "Yes, but only if the stack is empty."
+          },
+          {
+            "id": "d",
+            "text": "No. Flash applies only to activated abilities."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "Flash is a static ability that lets you play the card any time you could cast an instant. If you have priority and can legally cast the spell, the opponent's turn and a nonempty stack do not by themselves prevent it.",
+      "takeaway": "Flash is a static ability that lets you play the card any time you could cast an instant.",
+      "rules": [
+        "CR 702.8a",
+        "CR 304.1"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test flash as a timing permission, not as an ability that makes the spell an instant.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-022",
+      "title": "Instants and priority",
+      "category": "game-actions",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "It is your opponent's turn. You have priority and an instant card in your hand. No effect prohibits you from casting spells."
+      },
+      "question": {
+        "prompt": "May you cast the instant?",
+        "options": [
+          {
+            "id": "a",
+            "text": "No. You can cast spells only during your own turn."
+          },
+          {
+            "id": "b",
+            "text": "Yes. You may cast an instant whenever you have priority."
+          },
+          {
+            "id": "c",
+            "text": "Only if the stack is empty."
+          },
+          {
+            "id": "d",
+            "text": "Only during combat."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "A player who has priority may cast an instant from their hand. The instant uses the stack, and it can be cast during an opponent's turn or in response to another spell or ability.",
+      "takeaway": "A player who has priority may cast an instant from their hand.",
+      "rules": [
+        "CR 304.1",
+        "CR 117.1"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the relationship between instants and priority.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-023",
+      "title": "The top of the stack resolves first",
+      "category": "stack",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "You cast a spell. Your opponent responds with an instant. Both players then pass priority without taking further actions."
+      },
+      "question": {
+        "prompt": "Which object resolves first?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Your original spell, because it was cast first."
+          },
+          {
+            "id": "b",
+            "text": "Your opponent's instant, because it was put on the stack last."
+          },
+          {
+            "id": "c",
+            "text": "Both resolve simultaneously."
+          },
+          {
+            "id": "d",
+            "text": "Neither resolves until the next main phase."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "Objects are added to the top of the stack. When all players pass in succession, the topmost object resolves first. The opponent's response was added after your spell, so it resolves first.",
+      "takeaway": "Objects are added to the top of the stack.",
+      "rules": [
+        "CR 405.2",
+        "CR 117.4",
+        "CR 608.1"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the last-in, first-out order of the stack.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-024",
+      "title": "The active player gets priority again",
+      "category": "stack",
+      "difficulty": "intermediate",
+      "scenario": {
+        "format": "two-player",
+        "description": "You are the active player. You cast a spell, and all players pass so it resolves. There are no triggered abilities waiting to be put on the stack and no state-based actions to perform."
+      },
+      "question": {
+        "prompt": "Who receives priority after the spell resolves?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The next player in turn order automatically."
+          },
+          {
+            "id": "b",
+            "text": "The player who cast the spell, if that player is the active player."
+          },
+          {
+            "id": "c",
+            "text": "No player receives priority until the next phase."
+          },
+          {
+            "id": "d",
+            "text": "The player with the lowest life total."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "After a spell or ability other than a mana ability resolves, the active player receives priority. If the active player cast the spell, that is the same player.",
+      "takeaway": "After a spell or ability other than a mana ability resolves, the active player receives priority.",
+      "rules": [
+        "CR 117.3b",
+        "CR 117.5"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test priority after resolution, avoiding extra triggers or state changes.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-025",
+      "title": "Legendary permanents, different controllers",
+      "category": "state-based-actions",
+      "difficulty": "intermediate",
+      "scenario": {
+        "format": "two-player",
+        "description": "You control a legendary creature named A. Your opponent controls a different legendary creature also named A. Neither player controls another legendary permanent named A."
+      },
+      "question": {
+        "prompt": "Does the legend rule make either creature leave the battlefield?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes. The legend rule applies across all players."
+          },
+          {
+            "id": "b",
+            "text": "Yes. The active player chooses one creature to keep."
+          },
+          {
+            "id": "c",
+            "text": "No. The legend rule checks whether one player controls multiple legendary permanents with the same name."
+          },
+          {
+            "id": "d",
+            "text": "No. The legend rule only applies to planeswalkers."
+          }
+        ]
+      },
+      "answer": "c",
+      "explanation": "The legend rule applies when a single player controls two or more legendary permanents with the same name. The permanents in this scenario are controlled by different players, so the rule does not apply.",
+      "takeaway": "The legend rule applies when a single player controls two or more legendary permanents with the same name.",
+      "rules": [
+        "CR 704.5j"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the controller-specific condition of the legend rule.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-026",
+      "title": "Damage isn't destruction",
+      "category": "combat",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "A 2/2 creature is dealt 3 damage by Lightning Bolt. No effect prevents the damage or changes the creature's toughness."
+      },
+      "question": {
+        "prompt": "Which statement is correct?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Lightning Bolt destroys the creature directly."
+          },
+          {
+            "id": "b",
+            "text": "The damage is marked on the creature, and a state-based action destroys it for having lethal damage."
+          },
+          {
+            "id": "c",
+            "text": "The creature is sacrificed by the damage."
+          },
+          {
+            "id": "d",
+            "text": "The creature survives until the cleanup step because damage is not lethal until then."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "Damage dealt to a creature is marked on it. State-based actions then check whether the marked damage is lethal and destroy the creature if it is. The spell deals the damage; the state-based action destroys the creature.",
+      "takeaway": "Damage dealt to a creature is marked on it.",
+      "rules": [
+        "CR 120.5",
+        "CR 120.6",
+        "CR 704.5g"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Clarify that damage itself does not destroy; a state-based action does.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-027",
+      "title": "Lifelink and damage",
+      "category": "combat",
+      "difficulty": "intermediate",
+      "scenario": {
+        "format": "two-player",
+        "description": "A creature with lifelink deals 3 damage to an opponent during combat. No effect prevents or replaces the damage."
+      },
+      "question": {
+        "prompt": "What happens as a result of that damage?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Only the opponent loses 3 life."
+          },
+          {
+            "id": "b",
+            "text": "The opponent loses 3 life and the lifelink creature's controller gains 3 life."
+          },
+          {
+            "id": "c",
+            "text": "The creature's controller gains 3 life instead of the opponent losing life."
+          },
+          {
+            "id": "d",
+            "text": "The creature's controller gains life only if the creature survives combat."
+          }
+        ]
+      },
+      "answer": "b",
+      "explanation": "Damage dealt by a source with lifelink causes that source's controller to gain that much life in addition to the other results of the damage. The opponent loses 3 life and the controller gains 3 life.",
+      "takeaway": "Damage dealt by a source with lifelink causes that source's controller to gain that much life in addition to the other results of the damage.",
+      "rules": [
+        "CR 702.15b",
+        "CR 120.3"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test that lifelink adds life gain rather than replacing the damage event.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-028",
+      "title": "Damage clears in cleanup",
+      "category": "combat",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "A 4/4 creature survives combat with 2 damage marked on it. No effect changes its toughness or the marked damage before the cleanup step."
+      },
+      "question": {
+        "prompt": "When is that marked damage normally removed?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Immediately after combat."
+          },
+          {
+            "id": "b",
+            "text": "At the beginning of the next upkeep."
+          },
+          {
+            "id": "c",
+            "text": "During the cleanup step."
+          },
+          {
+            "id": "d",
+            "text": "When the creature becomes tapped."
+          }
+        ]
+      },
+      "answer": "c",
+      "explanation": "Damage marked on permanents is removed during the cleanup step as part of a turn-based action. It is not removed immediately when combat ends.",
+      "takeaway": "Damage marked on permanents is removed during the cleanup step as part of a turn-based action.",
+      "rules": [
+        "CR 120.6",
+        "CR 514.2"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the timing of damage removal at cleanup.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    },
+    {
+      "id": "rules-029",
+      "title": "Sorcery timing",
+      "category": "game-actions",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "It is your opponent's turn. You have a sorcery card in hand and no effect grants permission to cast it at another time."
+      },
+      "question": {
+        "prompt": "Can you cast the sorcery now?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, if you have priority."
+          },
+          {
+            "id": "b",
+            "text": "Yes, if the stack is empty."
+          },
+          {
+            "id": "c",
+            "text": "No. A sorcery normally requires your own main phase, priority, and an empty stack."
+          },
+          {
+            "id": "d",
+            "text": "Yes, during any combat step."
+          }
+        ]
+      },
+      "answer": "c",
+      "explanation": "A sorcery can normally be cast only when you have priority during a main phase of your own turn and the stack is empty. Having priority alone is not enough.",
+      "takeaway": "A sorcery can normally be cast only when you have priority during a main phase of your own turn and the stack is empty.",
+      "rules": [
+        "CR 307.1"
+      ],
+      "status": "approved",
+      "review": {
+        "rules": "verified",
+        "rules_version": "2026-09-25",
+        "reviewer_type": "Independent rule-text cross-check (AI-assisted; not judge certification)",
+        "notes": "Checked against the cited Comprehensive Rules text effective September 25, 2026. Recheck against the latest official rules before public launch or after a rules update."
+      },
+      "editorial": {
+        "intent": "Test the full default timing restriction for sorceries.",
+        "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
+      }
+    }
+  ]
+}
