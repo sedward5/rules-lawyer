@@ -100,3 +100,7 @@ code { background: #f0f0e9; padding: 2px 5px; border-radius: 5px; }
   .hero { padding-top: 30px; }
   .card-figure { width: 29%; min-width: 84px; }
 }
+
+.game-heading { align-items: center; }
+.game-heading .button { flex: 0 0 auto; min-height: 40px; padding: 8px 14px; font-size: .85rem; }
+@media (max-width: 560px) { .game-heading { align-items: stretch; } .game-heading .button { width: 100%; } }
