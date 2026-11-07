@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="Review, correct, preview, and export Rules Lawyer daily puzzle questions.">
+  <title>Rules Lawyer — Workshop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Rules <span>Lawyer</span></a>
+    <nav><a href="index.html">Daily game</a></nav>
+  </header>
+  <main class="container">
+    <section class="hero compact">
+      <p class="eyebrow">EDITORIAL WORKSPACE</p>
+      <h1>Question Workshop</h1>
+      <p class="lede">Import a batch, review it in plain language, make corrections, and export the JSON back to GitHub.</p>
+    </section>
+
+    <section class="stats-grid" aria-label="Question counts">
+      <div class="stat"><strong id="count-total">—</strong><span>Loaded</span></div>
+      <div class="stat"><strong id="count-approved">—</strong><span>Approved</span></div>
+      <div class="stat"><strong id="count-review">—</strong><span>Needs attention</span></div>
+    </section>
+
+    <section class="panel stack">
+      <div>
+        <h2>1. Import questions</h2>
+        <p class="muted">Paste a JSON array of questions or an object with a <code>questions</code> array. Importing replaces the current working batch.</p>
+      </div>
+      <textarea id="import-json" rows="5" autocapitalize="off" spellcheck="false" placeholder='[{"id":"rules-002", ...}]'></textarea>
+      <div class="button-row">
+        <button id="import-button" class="button primary">Import JSON</button>
+        <button id="load-example" class="button secondary">Load starter example</button>
+      </div>
+      <p id="import-message" class="message" role="status"></p>
+    </section>
+
+    <section class="panel stack">
+      <div class="section-heading">
+        <div><h2>2. Review queue</h2><p class="muted">Select a question to inspect and edit it.</p></div>
+        <button id="export-button" class="button primary">Export batch JSON</button>
+      </div>
+      <label for="question-select">Question</label>
+      <select id="question-select"></select>
+      <div id="review-card" class="review-card empty">Import a question batch to begin.</div>
+    </section>
+
+    <section class="panel stack" id="editor-panel" hidden>
+      <div><h2>3. Edit question</h2><p class="muted">These fields are saved as a local working draft. Export to make the repository copy authoritative.</p></div>
+      <div class="form-grid">
+        <label>Question ID<input id="edit-id"></label>
+        <label>Category<input id="edit-category"></label>
+        <label>Difficulty
+          <select id="edit-difficulty">
+            <option>beginner</option><option>intermediate</option><option>advanced</option>
+          </select>
+        </label>
+        <label>Format<input id="edit-format" placeholder="two-player, Commander, etc."></label>
+      </div>
+      <label>Scenario<textarea id="edit-scenario" rows="4"></textarea></label>
+      <label>Question prompt<textarea id="edit-prompt" rows="2"></textarea></label>
+      <div class="stack" id="answer-fields"></div>
+      <label>Correct answer
+        <select id="edit-answer"></select>
+      </label>
+      <label>Explanation<textarea id="edit-explanation" rows="5"></textarea></label>
+      <label>Learning takeaway<textarea id="edit-takeaway" rows="2"></textarea></label>
+      <label>Rules references <span class="muted">(one per line; include CR/IPG/MTR prefix where applicable)</span><textarea id="edit-rules" rows="3"></textarea></label>
+      <div class="form-grid">
+        <label>Content status
+          <select id="edit-status">
+            <option value="draft">Draft</option>
+            <option value="editorial_review">Editorial review</option>
+            <option value="rules_review">Rules review</option>
+            <option value="correction_needed">Correction needed</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </label>
+        <label>Rules verification
+          <select id="edit-verification">
+            <option value="unverified">Unverified</option>
+            <option value="needs_expert">Needs expert review</option>
+            <option value="verified">Verified by rules reviewer</option>
+          </select>
+        </label>
+      </div>
+      <label>Reviewer notes<textarea id="edit-notes" rows="3" placeholder="What should be checked or changed?"></textarea></label>
+      <div class="button-row">
+        <button id="save-edit" class="button primary">Save local draft</button>
+        <button id="copy-review" class="button secondary">Copy review notes</button>
+      </div>
+      <p id="edit-message" class="message" role="status"></p>
+    </section>
+
+    <section class="panel stack" id="preview-panel" hidden>
+      <h2>4. Player preview</h2>
+      <div id="player-preview"></div>
+    </section>
+
+    <section class="panel notice">
+      <strong>Editorial approval is not rules verification.</strong>
+      You can approve clarity and presentation, but only mark rules as verified after checking the cited authoritative source. A successful JSON validation does not establish that a ruling is correct.
+    </section>
+
+    <footer class="site-footer"><a href="index.html">Back to daily challenge</a></footer>
+  </main>
+  <script type="module" src="src/workshop.js"></script>
+</body>
+</html>
