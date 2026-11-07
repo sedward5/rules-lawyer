@@ -47,7 +47,13 @@
       "editorial": {
         "intent": "Teach that playing a land is a special action, not casting a spell.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Forest",
+          "role": "The land being played"
+        }
+      ]
     },
     {
       "id": "rules-003",
@@ -96,7 +102,13 @@
       "editorial": {
         "intent": "Distinguish putting a land onto the battlefield from playing a land.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Walking Atlas",
+          "role": "Puts a land card from your hand onto the battlefield"
+        }
+      ]
     },
     {
       "id": "rules-004",
@@ -144,7 +156,17 @@
       "editorial": {
         "intent": "Test the normal one-land-per-turn rule and its stated exception.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Forest",
+          "role": "A land card"
+        },
+        {
+          "name": "Mountain",
+          "role": "Another land card"
+        }
+      ]
     },
     {
       "id": "rules-005",
@@ -193,7 +215,13 @@
       "editorial": {
         "intent": "Test the summoning-sickness rule without mixing it up with tap-symbol abilities.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Grizzly Bears",
+          "role": "A creature without haste"
+        }
+      ]
     },
     {
       "id": "rules-006",
@@ -243,7 +271,13 @@
       "editorial": {
         "intent": "Test both parts of haste's exception to the summoning-sickness rule.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Goblin Guide",
+          "role": "A creature with haste"
+        }
+      ]
     },
     {
       "id": "rules-007",
@@ -291,7 +325,19 @@
       "editorial": {
         "intent": "Teach who makes the choice and distinguish the legend rule from sacrificing.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Commander-legal legendary creature",
+          "role": "Two copies of the same legendary creature",
+          "scryfallQuery": "f:edh t:legendary t:creature"
+        },
+        {
+          "name": "Commander-legal legendary creature",
+          "role": "Two copies of the same legendary creature",
+          "scryfallQuery": "f:edh t:legendary t:creature"
+        }
+      ]
     },
     {
       "id": "rules-008",
@@ -339,7 +385,17 @@
       "editorial": {
         "intent": "Test the automatic cancellation of +1/+1 and -1/-1 counters.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Walking Ballista",
+          "role": "A creature with +1/+1 counters"
+        },
+        {
+          "name": "Black Sun's Zenith",
+          "role": "A -1/-1 counter effect"
+        }
+      ]
     },
     {
       "id": "rules-009",
@@ -389,7 +445,17 @@
       "editorial": {
         "intent": "Distinguish preventing damage from preventing destruction.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Darksteel Myr",
+          "role": "An indestructible creature"
+        },
+        {
+          "name": "Lightning Bolt",
+          "role": "Damage source"
+        }
+      ]
     },
     {
       "id": "rules-010",
@@ -438,7 +504,17 @@
       "editorial": {
         "intent": "Test deathtouch's state-based action rather than lethal-damage math.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Typhoid Rats",
+          "role": "Deathtouch source"
+        },
+        {
+          "name": "Serra Angel",
+          "role": "Creature receiving damage"
+        }
+      ]
     },
     {
       "id": "rules-011",
@@ -487,7 +563,17 @@
       "editorial": {
         "intent": "Test the interaction between flying and reach.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Serra Angel",
+          "role": "Flying attacker"
+        },
+        {
+          "name": "Giant Spider",
+          "role": "Reach blocker"
+        }
+      ]
     },
     {
       "id": "rules-012",
@@ -535,7 +621,17 @@
       "editorial": {
         "intent": "Test the minimum number of blockers required by menace.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Boggart Brute",
+          "role": "Menace attacker"
+        },
+        {
+          "name": "Grizzly Bears",
+          "role": "The lone potential blocker"
+        }
+      ]
     },
     {
       "id": "rules-013",
@@ -583,7 +679,17 @@
       "editorial": {
         "intent": "Test lethal-damage assignment for trample with a clean, unmodified board.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Ghalta, Primal Hunger",
+          "role": "Trampling attacker"
+        },
+        {
+          "name": "Grizzly Bears",
+          "role": "The blocker"
+        }
+      ]
     },
     {
       "id": "rules-014",
@@ -631,7 +737,17 @@
       "editorial": {
         "intent": "Test the two-step combat damage procedure created by first strike.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "White Knight",
+          "role": "First-strike creature"
+        },
+        {
+          "name": "Hill Giant",
+          "role": "Creature without first strike"
+        }
+      ]
     },
     {
       "id": "rules-015",
@@ -680,7 +796,17 @@
       "editorial": {
         "intent": "Teach that triggered abilities on the stack are independent of their sources.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Mulldrifter",
+          "role": "Creature with an enters-the-battlefield draw trigger"
+        },
+        {
+          "name": "Murder",
+          "role": "Removal spell"
+        }
+      ]
     },
     {
       "id": "rules-016",
@@ -730,7 +856,13 @@
       "editorial": {
         "intent": "Distinguish the moment an ability triggers from the moment it is put on the stack.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Blood Artist",
+          "role": "Example triggered ability"
+        }
+      ]
     },
     {
       "id": "rules-017",
@@ -779,7 +911,17 @@
       "editorial": {
         "intent": "Test that state-based actions are not stack objects and cannot be responded to.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Solemnity",
+          "role": "Counter interaction context"
+        },
+        {
+          "name": "Dismember",
+          "role": "Toughness-reducing spell"
+        }
+      ]
     },
     {
       "id": "rules-018",
@@ -829,7 +971,17 @@
       "editorial": {
         "intent": "Test the timing of a token's zone change and its subsequent ceasing to exist.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Raise the Alarm",
+          "role": "Creates creature tokens for the death-trigger scenario"
+        },
+        {
+          "name": "Blood Artist",
+          "role": "Death-trigger example"
+        }
+      ]
     },
     {
       "id": "rules-019",
@@ -879,7 +1031,13 @@
       "editorial": {
         "intent": "Test the actual timing of losing for attempting to draw from an empty library.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Divination",
+          "role": "Draw spell"
+        }
+      ]
     },
     {
       "id": "rules-020",
@@ -928,7 +1086,17 @@
       "editorial": {
         "intent": "Test the timing restriction built into the equip keyword.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Bonesplitter",
+          "role": "Equipment"
+        },
+        {
+          "name": "Grizzly Bears",
+          "role": "Creature to equip"
+        }
+      ]
     },
     {
       "id": "rules-021",
@@ -977,7 +1145,13 @@
       "editorial": {
         "intent": "Test flash as a timing permission, not as an ability that makes the spell an instant.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Ambush Viper",
+          "role": "Creature with flash"
+        }
+      ]
     },
     {
       "id": "rules-022",
@@ -1026,7 +1200,13 @@
       "editorial": {
         "intent": "Test the relationship between instants and priority.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Opt",
+          "role": "Instant spell"
+        }
+      ]
     },
     {
       "id": "rules-023",
@@ -1076,7 +1256,17 @@
       "editorial": {
         "intent": "Test the last-in, first-out order of the stack.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Lightning Bolt",
+          "role": "First spell"
+        },
+        {
+          "name": "Counterspell",
+          "role": "Response on top of the stack"
+        }
+      ]
     },
     {
       "id": "rules-024",
@@ -1125,7 +1315,13 @@
       "editorial": {
         "intent": "Test priority after resolution, avoiding extra triggers or state changes.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Shock",
+          "role": "Resolving spell"
+        }
+      ]
     },
     {
       "id": "rules-025",
@@ -1173,7 +1369,17 @@
       "editorial": {
         "intent": "Test the controller-specific condition of the legend rule.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Krenko, Mob Boss",
+          "role": "Legendary permanent controlled by one player"
+        },
+        {
+          "name": "Krenko, Mob Boss",
+          "role": "Same-name legendary permanent controlled by the opponent"
+        }
+      ]
     },
     {
       "id": "rules-026",
@@ -1223,7 +1429,17 @@
       "editorial": {
         "intent": "Clarify that damage itself does not destroy; a state-based action does.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Savannah Lions",
+          "role": "Creature taking lethal damage"
+        },
+        {
+          "name": "Lightning Bolt",
+          "role": "Damage source"
+        }
+      ]
     },
     {
       "id": "rules-027",
@@ -1272,7 +1488,13 @@
       "editorial": {
         "intent": "Test that lifelink adds life gain rather than replacing the damage event.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Healer's Hawk",
+          "role": "Creature with lifelink"
+        }
+      ]
     },
     {
       "id": "rules-028",
@@ -1321,7 +1543,13 @@
       "editorial": {
         "intent": "Test the timing of damage removal at cleanup.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Hill Giant",
+          "role": "Creature with marked damage"
+        }
+      ]
     },
     {
       "id": "rules-029",
@@ -1369,7 +1597,13 @@
       "editorial": {
         "intent": "Test the full default timing restriction for sorceries.",
         "review_focus": "Confirm the setup is clear, assumptions are complete, and only one answer is correct."
-      }
+      },
+      "cards": [
+        {
+          "name": "Wrath of God",
+          "role": "Sorcery spell"
+        }
+      ]
     }
   ]
 }
