@@ -1,5 +1,6 @@
 {
   "batches": [
-    "questions/batch-001.json"
+    "questions/batch-001.json",
+    "questions/batch-002.json"
   ]
 }
