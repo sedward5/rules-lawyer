@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "id": "rules-001",
+      "title": "The Aura and the vanished creature",
+      "category": "targeting",
+      "difficulty": "beginner",
+      "scenario": {
+        "format": "two-player",
+        "description": "Your opponent controls a creature enchanted with Pacifism. You cast Naturalize targeting Pacifism. In response, your opponent activates an ability that sacrifices the enchanted creature."
+      },
+      "question": {
+        "prompt": "What happens when Naturalize would resolve?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Naturalize doesn't resolve because its only target is illegal."
+          },
+          {
+            "id": "b",
+            "text": "Naturalize resolves and destroys Pacifism."
+          },
+          {
+            "id": "c",
+            "text": "Naturalize resolves, but Pacifism remains on the battlefield."
+          },
+          {
+            "id": "d",
+            "text": "The sacrificed creature returns to the battlefield."
+          }
+        ]
+      },
+      "answer": "a",
+      "explanation": "The creature is sacrificed as the ability resolves. After that ability finishes resolving, state-based actions are checked before a player receives priority. Pacifism is an Aura that is no longer attached to a legal object, so it is put into its owner's graveyard. When Naturalize would resolve, its only target (Pacifism) is no longer on the battlefield and is illegal. Because all of Naturalize's targets are illegal, it doesn't resolve.",
+      "takeaway": "An Aura that becomes unattached is put into its owner's graveyard as a state-based action. A spell with all its targets illegal doesn't resolve; this is often colloquially called 'fizzling,' but it is not the same as being countered by a counterspell.",
+      "rules": [
+        "CR 704.5m",
+        "CR 608.2b"
+      ],
+      "status": "approved",
+      "review": {
+        "editorial": "starter example; wording checked for a clear two-player scenario",
+        "rules": "verified",
+        "rules_version": "2026-11-06",
+        "reviewer_type": "rules-source check",
+        "notes": "Verify against the current official Comprehensive Rules before public release. This starter is intended to demonstrate the content format and should receive an independent judge review."
+      },
+      "editorial": {
+        "intent": "Test how an Aura behaves when the permanent it enchants leaves the battlefield, and how an illegal target is handled on resolution.",
+        "review_focus": "Check that the sacrifice ability is understood to resolve before Naturalize. Keep the distinction between 'doesn't resolve' and 'countered' precise."
+      }
+    }
+  ]
+}
