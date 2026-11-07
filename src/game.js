@@ -1,4 +1,4 @@
-import { escapeHtml, dailyIndex, localDateKey } from "./common.js";
+import { escapeHtml, dailyIndex, localDateKey, cardStripMarkup, hydrateCardImages } from "./common.js";
 
 const game = document.querySelector("#game");
 const dateKey = localDateKey();
@@ -16,7 +16,7 @@ async function loadQuestions() {
   return batches.flatMap(batch => batch.questions || batch);
 }
 
-function renderQuestion(q) {
+async function renderQuestion(q) {
   const options = q.question.options.map(option => `
     <label class="choice">
       <input type="radio" name="answer" value="${escapeHtml(option.id)}">
@@ -30,6 +30,7 @@ function renderQuestion(q) {
         <span class="pill">${escapeHtml(q.difficulty)}</span>
       </div>
       <h2>${escapeHtml(q.title || "What happens next?")}</h2>
+      ${cardStripMarkup(q.cards || [])}
       <p>${escapeHtml(q.scenario.description)}</p>
       <h3>${escapeHtml(q.question.prompt)}</h3>
       <form id="answer-form" class="stack">
@@ -37,7 +38,10 @@ function renderQuestion(q) {
         <button class="button primary" type="submit">Lock in answer</button>
       </form>
       <div id="result" aria-live="polite"></div>
+      <p class="card-credit">Card images provided remotely by <a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a>. Card art is © its respective owners.</p>
     </div>`;
+
+  await hydrateCardImages(game, q.cards || []);
 
   document.querySelector("#answer-form").addEventListener("submit", event => {
     event.preventDefault();
@@ -49,7 +53,7 @@ function renderQuestion(q) {
       <div class="feedback ${correct ? "correct" : "incorrect"}">
         <strong>${correct ? "Correct ruling." : "Not quite."}</strong>
         <p>${escapeHtml(q.explanation)}</p>
-        ${q.takeaway ? `<p><strong>Learning takeaway:</strong> ${escapeHtml(q.takeaway)}</p>` : ""}
+        ${q.takeaway ? `<p><strong>Rules takeaway:</strong> ${escapeHtml(q.takeaway)}</p>` : ""}
         <p><strong>Rules references:</strong> ${q.rules.map(escapeHtml).join(", ")}</p>
       </div>`;
     document.querySelectorAll('input[name="answer"]').forEach(input => input.disabled = true);
@@ -63,7 +67,7 @@ try {
     .sort((a, b) => a.id.localeCompare(b.id));
   if (!questions.length) throw new Error("No approved, rules-verified questions are available yet.");
   const index = dailyIndex(dateKey, questions.length);
-  renderQuestion(questions[index]);
+  await renderQuestion(questions[index]);
 } catch (error) {
-  game.innerHTML = `<div class="feedback"><strong>Today's puzzle isn't available yet.</strong><p>${escapeHtml(error.message)}</p><p>The content library may still be in setup. Visit the Workshop to review the starter question.</p></div>`;
+  game.innerHTML = `<div class="feedback"><strong>Today's puzzle isn't available yet.</strong><p>${escapeHtml(error.message)}</p><p>The content library may still be in setup. Visit the Workshop to review the question batch.</p></div>`;
 }

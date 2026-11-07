@@ -25,6 +25,7 @@ export function validateQuestion(q) {
   if (!QUESTION_STATUSES.includes(q.status)) errors.push("Invalid status.");
   if (!["unverified", "needs_expert", "verified"].includes(q.review?.rules)) errors.push("Invalid rules review status.");
   if (!Array.isArray(q.rules) || q.rules.length === 0) errors.push("At least one rules reference is required.");
+  if (q.cards && !Array.isArray(q.cards)) errors.push("cards must be an array when supplied.");
   return errors;
 }
 
@@ -47,11 +48,55 @@ export function localDateKey(date = new Date()) {
 
 export function dailyIndex(dateKey, count) {
   if (!count) return -1;
-  // Stable deterministic hash: every visitor gets the same selection for a UTC date.
   let hash = 2166136261;
   for (const char of dateKey) {
     hash ^= char.charCodeAt(0);
     hash = Math.imul(hash, 16777619);
   }
   return (hash >>> 0) % count;
+}
+
+export function cardStripMarkup(cards = []) {
+  if (!cards.length) return "";
+  return `<div class="card-strip" aria-label="Cards in this scenario">${cards.map(card => `
+    <figure class="card-figure">
+      <a class="card-image-link" data-card-name="${escapeHtml(card.name)}" href="https://scryfall.com/search?q=${encodeURIComponent(card.name)}" target="_blank" rel="noopener noreferrer">
+        <div class="card-image-placeholder">${escapeHtml(card.name)}</div>
+      </a>
+      <figcaption><strong>${escapeHtml(card.name)}</strong><span>${escapeHtml(card.role || "Scenario card")}</span></figcaption>
+    </figure>`).join("")}</div>`;
+}
+
+export async function hydrateCardImages(container, cards = []) {
+  if (!container || !cards.length) return;
+  for (const card of cards) {
+    const link = [...container.querySelectorAll("[data-card-name]")].find(el => el.dataset.cardName === card.name);
+    if (!link) continue;
+    try {
+      const cacheKey = `rules-lawyer-scryfall-image:${card.name.toLowerCase()}`;
+      let data = null;
+      try { data = JSON.parse(localStorage.getItem(cacheKey) || "null"); } catch {}
+      if (!data?.image) {
+        const endpoint = `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(card.name)}`;
+        const response = await fetch(endpoint, { headers: { "Accept": "application/json" } });
+        if (!response.ok) throw new Error(`Scryfall returned ${response.status}`);
+        const result = await response.json();
+        const image = result.image_uris?.normal || result.card_faces?.[0]?.image_uris?.normal;
+        if (!image) throw new Error("No normal image was supplied for this card.");
+        data = { image, page: result.scryfall_uri };
+        try { localStorage.setItem(cacheKey, JSON.stringify(data)); } catch {}
+      }
+      const img = document.createElement("img");
+      img.src = data.image;
+      img.alt = `${card.name} Magic card`;
+      img.loading = "lazy";
+      img.decoding = "async";
+      link.replaceChildren(img);
+      link.href = data.page || `https://scryfall.com/search?q=${encodeURIComponent(card.name)}`;
+      link.setAttribute("aria-label", `View ${card.name} on Scryfall`);
+    } catch (error) {
+      // Keep the readable card-name placeholder if the remote service is unavailable.
+      link.title = `Card image unavailable: ${error.message}`;
+    }
+  }
 }

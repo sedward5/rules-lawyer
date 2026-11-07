@@ -1,4 +1,4 @@
-import { escapeHtml, validateBatch } from "./common.js";
+import { escapeHtml, validateBatch, cardStripMarkup, hydrateCardImages } from "./common.js";
 
 const $ = selector => document.querySelector(selector);
 const STORAGE_KEY = "rules-lawyer-workshop-draft-v1";
@@ -13,20 +13,17 @@ const fields = {
   notes: "#edit-notes"
 };
 
-function selectedQuestion() {
-  return questions.find(q => q.id === selectedId);
-}
-
 function statusLabel(status) {
   return (status || "draft").replaceAll("_", " ");
 }
-
+function selectedQuestion() {
+  return questions.find(q => q.id === selectedId);
+}
 function updateCounts() {
   $("#count-total").textContent = questions.length;
   $("#count-approved").textContent = questions.filter(q => q.status === "approved" && q.review?.rules === "verified").length;
   $("#count-review").textContent = questions.filter(q => q.status !== "approved" || q.review?.rules !== "verified").length;
 }
-
 function renderQueue() {
   const select = $("#question-select");
   select.innerHTML = questions.map(q =>
@@ -38,8 +35,7 @@ function renderQueue() {
   updateCounts();
   renderReview();
 }
-
-function renderReview() {
+async function renderReview() {
   const q = selectedQuestion();
   const card = $("#review-card");
   $("#editor-panel").hidden = !q;
@@ -56,6 +52,7 @@ function renderReview() {
   card.innerHTML = `
     <div class="pills"><span class="pill">${escapeHtml(q.category)}</span><span class="pill">${escapeHtml(q.difficulty)}</span><span class="pill">${escapeHtml(q.scenario.format || "format unspecified")}</span></div>
     <h3>${escapeHtml(q.title || q.id)}</h3>
+    ${cardStripMarkup(q.cards || [])}
     <p>${escapeHtml(q.scenario.description)}</p>
     <strong>${escapeHtml(q.question.prompt)}</strong>
     <div class="answer-list">${options}</div>
@@ -63,10 +60,10 @@ function renderReview() {
     <div><strong>Rules references</strong><p>${(q.rules || []).map(escapeHtml).join(", ")}</p></div>
     <p class="status ${escapeHtml(q.status)}"><strong>Content:</strong> ${escapeHtml(statusLabel(q.status))} · <strong>Rules:</strong> ${escapeHtml(q.review?.rules || "unverified")}</p>
     <div><strong>Editorial briefing</strong><p>${escapeHtml(q.editorial?.intent || "No learning objective supplied.")}</p><p>${escapeHtml(q.editorial?.review_focus || "Check clarity, assumptions, answer uniqueness, and explanation quality.")}</p></div>`;
+  await hydrateCardImages(card, q.cards || []);
   populateEditor(q);
-  renderPreview(q);
+  await renderPreview(q);
 }
-
 function populateEditor(q) {
   const values = {
     id: q.id, category: q.category, difficulty: q.difficulty,
@@ -76,9 +73,7 @@ function populateEditor(q) {
     status: q.status, verification: q.review?.rules || "unverified",
     notes: q.review?.notes || ""
   };
-  Object.entries(fields).forEach(([key, selector]) => {
-    $(selector).value = values[key] ?? "";
-  });
+  Object.entries(fields).forEach(([key, selector]) => { $(selector).value = values[key] ?? ""; });
   $("#answer-fields").innerHTML = q.question.options.map((o, i) => `
     <label>Answer option ${o.id.toUpperCase()}
       <textarea rows="2" data-option-index="${i}">${escapeHtml(o.text)}</textarea>
@@ -88,7 +83,6 @@ function populateEditor(q) {
   ).join("");
   $("#edit-answer").value = q.answer;
 }
-
 function readEditor() {
   const q = selectedQuestion();
   if (!q) return;
@@ -115,25 +109,24 @@ function readEditor() {
   }
   selectedId = q.id;
 }
-
-function renderPreview(q) {
+async function renderPreview(q) {
   const options = q.question.options.map(o =>
     `<div class="answer-option ${o.id === q.answer ? "correct" : ""}"><strong>${escapeHtml(o.id.toUpperCase())}.</strong><span>${escapeHtml(o.text)}</span></div>`
   ).join("");
   $("#player-preview").innerHTML = `
     <div class="pills"><span class="pill">${escapeHtml(q.category)}</span><span class="pill">${escapeHtml(q.difficulty)}</span></div>
     <h3>${escapeHtml(q.title || "What happens next?")}</h3>
+    ${cardStripMarkup(q.cards || [])}
     <p>${escapeHtml(q.scenario.description)}</p>
     <strong>${escapeHtml(q.question.prompt)}</strong>
     <div class="answer-list">${options}</div>
     <div class="feedback"><strong>Answer key preview: ${escapeHtml(q.answer.toUpperCase())}</strong><p>${escapeHtml(q.explanation)}</p><p><strong>References:</strong> ${q.rules.map(escapeHtml).join(", ")}</p></div>`;
+  await hydrateCardImages($("#player-preview"), q.cards || []);
 }
-
 function persistDraft() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ questions, selectedId })); }
   catch { /* Browser storage is a convenience, never the source of truth. */ }
 }
-
 function importQuestions(raw) {
   const parsed = JSON.parse(raw);
   questions = validateBatch(parsed).map(q => structuredClone(q));
@@ -141,25 +134,35 @@ function importQuestions(raw) {
   persistDraft();
   renderQueue();
 }
-
 async function loadExample() {
-  const response = await fetch("./content/questions/batch-001.json");
-  if (!response.ok) throw new Error("Could not load the starter example.");
-  importQuestions(await response.text());
-}
+  const manifestResponse = await fetch("./content/manifest.json");
+  if (!manifestResponse.ok) throw new Error("Could not load the question manifest.");
+  const manifest = await manifestResponse.json();
+  if (!Array.isArray(manifest.batches) || manifest.batches.length === 0) {
+    throw new Error("The question manifest does not contain any batches.");
+  }
 
+  const batchResponses = await Promise.all(manifest.batches.map(path => fetch(`./content/${path}`)));
+  const failedIndex = batchResponses.findIndex(response => !response.ok);
+  if (failedIndex !== -1) {
+    throw new Error(`Could not load question batch: ${manifest.batches[failedIndex]}`);
+  }
+
+  const batchDocuments = await Promise.all(batchResponses.map(response => response.json()));
+  const allQuestions = batchDocuments.flatMap(batch => Array.isArray(batch) ? batch : batch.questions || []);
+  if (allQuestions.length === 0) throw new Error("The manifest batches did not contain any questions.");
+  importQuestions(JSON.stringify({ questions: allQuestions }));
+}
 $("#import-button").addEventListener("click", () => {
   try {
     importQuestions($("#import-json").value);
     $("#import-message").textContent = `Imported ${questions.length} question(s).`;
-  } catch (error) {
-    $("#import-message").textContent = `Import failed: ${error.message}`;
-  }
+  } catch (error) { $("#import-message").textContent = `Import failed: ${error.message}`; }
 });
 $("#load-example").addEventListener("click", async () => {
   try {
     await loadExample();
-    $("#import-message").textContent = "Starter example loaded.";
+    $("#import-message").textContent = `Loaded ${questions.length} curated questions.`;
   } catch (error) { $("#import-message").textContent = error.message; }
 });
 $("#question-select").addEventListener("change", event => {
@@ -171,7 +174,7 @@ $("#question-select").addEventListener("change", event => {
 $("#save-edit").addEventListener("click", () => {
   try {
     readEditor();
-    const errors = validateBatch(questions);
+    validateBatch(questions);
     persistDraft();
     renderQueue();
     $("#edit-message").textContent = "Local draft saved. Export the batch to update the repository.";
@@ -205,7 +208,6 @@ $("#export-button").addEventListener("click", async () => {
   } catch (error) { $("#import-message").textContent = `Export failed: ${error.message}`; }
 });
 
-// Restore an in-progress local edit, if one exists. The committed repository remains canonical.
 try {
   const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
   if (saved?.questions) {
